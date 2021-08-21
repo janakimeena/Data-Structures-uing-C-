@@ -5,6 +5,7 @@
 */
 #include<iostream>
 using namespace std;
+bool delete_error_flag = false;
 struct node
 {
     int data;
@@ -19,6 +20,7 @@ class llist
     bool InsertBeg(int);
     bool InsertEnd(int);
     bool InsertPos(int,int);
+    int DeleteBeg();
     void PrintList();
 };
 node* CreateNode(int data)
@@ -103,22 +105,37 @@ void llist::PrintList()
         temp = temp->next;
     }
 }
+int llist::DeleteBeg()
+{
+    delete_error_flag = false;
+    node* temp;
+    int tempint;
+    if(IsEmpty())
+    {
+        delete_error_flag = true;
+        return -1;
+    }
+    temp = head;
+    tempint = temp->data;
+    head = head->next;
+    return tempint;
+}
 int main()
 {
     llist l;
     int t;
     cout<<"Isempty returned "<<l.IsEmpty()<<endl;
-//    l.InsertBeg(1);
-//    l.InsertBeg(2);
-//    l.InsertEnd(5);
+    l.InsertBeg(1);
+    l.InsertBeg(2);
+    l.InsertEnd(5);
     l.InsertPos(2,10);    
     l.PrintList();
 
-    /*t = l.DeleteBeg();
+    t = l.DeleteBeg();
     if(delete_error_flag)
     cout<<"Deletion failed"<<endl;
     else
     cout<<"Deleted element is "<<t<<endl;
-    l.PrintList();*/
+    l.PrintList();
 
 }

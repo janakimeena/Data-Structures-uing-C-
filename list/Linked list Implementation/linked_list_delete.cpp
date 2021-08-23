@@ -21,6 +21,7 @@ class llist
     bool InsertEnd(int);
     bool InsertPos(int,int);
     int DeleteBeg();
+    int DeleteEnd();
     void PrintList();
 };
 node* CreateNode(int data)
@@ -94,6 +95,7 @@ bool llist::InsertPos(int pos, int data)
         return true;
 
 }
+
 void llist::PrintList()
 {
     node* temp;
@@ -120,6 +122,30 @@ int llist::DeleteBeg()
     head = head->next;
     return tempint;
 }
+int llist::DeleteEnd()
+{
+    node* temp;
+    int tempint;
+    delete_error_flag=false;
+    if(IsEmpty())
+    {
+        delete_error_flag = true;
+        return -1;
+    }
+    if(head->next==NULL)
+    {
+        tempint = head->data;
+        delete head;
+        head = NULL;
+    }
+    temp = head;
+    while(temp->next->next!=NULL)
+    temp = temp->next;
+    tempint = temp->next->data;
+    delete temp->next;
+    temp->next=NULL;
+    return tempint;
+}
 int main()
 {
     llist l;
@@ -132,6 +158,13 @@ int main()
     l.PrintList();
 
     t = l.DeleteBeg();
+    if(delete_error_flag)
+    cout<<"Deletion failed"<<endl;
+    else
+    cout<<"Deleted element is "<<t<<endl;
+    l.PrintList();
+
+    t = l.DeleteEnd();
     if(delete_error_flag)
     cout<<"Deletion failed"<<endl;
     else

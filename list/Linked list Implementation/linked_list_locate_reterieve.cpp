@@ -24,6 +24,7 @@ class llist
     int DeleteEnd();
     int DeletePos(int);
     void PrintList();
+    int locate(int);
 };
 node* CreateNode(int data)
 {
@@ -181,6 +182,23 @@ int llist::DeletePos(int pos)
     return tempint;
 
 }
+int llist::locate(int ele)
+{
+    node *temp;
+    int counter;
+    if(IsEmpty())
+    return -1;
+    temp = head;
+    counter = 1;
+    while(temp!=NULL)
+    {
+        if(temp->data == ele)
+        return counter;
+        counter++;
+        temp = temp->next;
+    }
+    return -1;
+}
 int main()
 {
     llist l;
@@ -191,8 +209,13 @@ int main()
     l.InsertEnd(5);
     l.InsertPos(2,10);    
     l.PrintList();
+    t = l.locate(50);
+    if(t==-1)
+    cout<<"Element not found\n";
+    else
+    cout<<"Element found at "<<t<<endl;
 
-    t = l.DeletePos(5);
+    /*t = l.DeletePos(5);
     if(delete_error_flag)
     cout<<"Deletion failed"<<endl;
     else

@@ -6,6 +6,7 @@
 #include<iostream>
 using namespace std;
 bool delete_error_flag = false;
+bool reterieve_error_flag = false;
 struct node
 {
     int data;
@@ -25,6 +26,7 @@ class llist
     int DeletePos(int);
     void PrintList();
     int locate(int);
+    int reterieve(int);
 };
 node* CreateNode(int data)
 {
@@ -199,6 +201,36 @@ int llist::locate(int ele)
     }
     return -1;
 }
+int llist::reterieve(int pos)
+{
+    node *temp;
+    int counter;
+    reterieve_error_flag = false;
+    if(pos<1)
+    {
+        reterieve_error_flag = true;
+        return -1;
+    }
+    
+    if(IsEmpty())
+    {
+        reterieve_error_flag = true;
+        return -1;
+    }
+    temp = head;
+    counter=1;
+    while(counter<pos)
+    {
+        temp = temp->next;
+        counter++;
+        if(temp==NULL)
+        {
+            reterieve_error_flag = true;
+            return -1;
+        }
+    }
+    return temp->data;
+}
 int main()
 {
     llist l;
@@ -209,8 +241,8 @@ int main()
     l.InsertEnd(5);
     l.InsertPos(2,10);    
     l.PrintList();
-    t = l.locate(50);
-    if(t==-1)
+    t = l.reterieve(-6);
+    if(reterieve_error_flag)
     cout<<"Element not found\n";
     else
     cout<<"Element found at "<<t<<endl;

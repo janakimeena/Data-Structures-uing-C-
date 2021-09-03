@@ -5,6 +5,9 @@ int main()
     int t;
     cout<<"Isempty returned "<<l.IsEmpty()<<endl;
     l.InsertBeg(1);
+    l.InsertBeg(2);
+    l.InsertBeg(3);
+    l.InsertBeg(4);
     l.PrintList();
     
     

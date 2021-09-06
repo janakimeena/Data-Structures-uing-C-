@@ -4,10 +4,12 @@ int main()
     cllist l;
     int t;
     cout<<"Isempty returned "<<l.IsEmpty()<<endl;
-    l.InsertBeg(1);
-    l.InsertBeg(2);
-    l.InsertBeg(3);
-    l.InsertBeg(4);
+    l.InsertEnd(10);
+    l.InsertEnd(7);
+    l.InsertEnd(15);
+    l.InsertEnd(28);
+    l.InsertEnd(19);
+    l.InsertPos(2,25);
     l.PrintList();
     
     

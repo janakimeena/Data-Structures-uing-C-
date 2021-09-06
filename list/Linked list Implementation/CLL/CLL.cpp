@@ -50,9 +50,52 @@ bool cllist::InsertBeg(int d)
     head = new_node;
     return true;
 }
+bool cllist::InsertEnd(int d)
+{
+    node* temp,*new_node;
+    if(IsEmpty())
+    return InsertBeg(d);
+    new_node = CreateNode(d);
+    if(!new_node)
+    return false;
+    temp = head;
+    while(temp->next!=head)
+    temp = temp->next;
+    temp->next = new_node;
+    new_node->next = head;
+    return true;
+}
+bool cllist::InsertPos(int pos,int data)
+{
+    node* new_node,*temp;
+    int counter;
+    if(IsEmpty())
+        return InsertBeg(data);
+    new_node = CreateNode(data);
+    if (new_node==NULL)
+        return false;
+    temp = head;
+    counter = 1;
+    while(temp->next!=head)
+    {
+        if(counter==pos-1)
+            break;
+        counter++;
+        temp=temp->next;
+    }
+    if(counter==pos-1)
+    {
+        new_node->next = temp->next;
+        temp->next = new_node;
+        return true;
+    }
+    return false;
+}
 void cllist::PrintList()
 {
     node* temp;
+    if(IsEmpty())
+    return;
     temp = head;
     cout<<"Printing list...\n";
     while(temp->next!=head)
@@ -62,3 +105,6 @@ void cllist::PrintList()
     }
     cout<<temp->data<<endl;
 }
+
+
+

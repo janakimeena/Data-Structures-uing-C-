@@ -10,9 +10,13 @@ int main()
     l.InsertEnd(28);
     l.InsertEnd(19);
     l.InsertPos(2,25);
-    l.PrintList();
-    
-    
+    /*t = l.DeleteBeg();
+    if(delete_error_flag)
+        cout<<"Deletion failed";
+    else
+        cout<<"Element deleted is "<<t<<endl;*/
+    //l.PrintList();
+      
     
     /*l.InsertBeg(2);
     l.InsertEnd(5);

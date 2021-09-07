@@ -10,6 +10,7 @@ bool delete_error_flag = false;
 bool reterieve_error_flag = false;
 bool previous_error_flag = false;
 bool next_error_flag = false;
+bool last_but_one_error_flag = false;
 node* CreateNode(int data)
 {
     node* new_node;
@@ -91,6 +92,54 @@ bool cllist::InsertPos(int pos,int data)
     }
     return false;
 }
+int cllist::DeleteBeg()
+{
+    node* temp, *temp1;
+    int data;
+    delete_error_flag = false;
+    // Step 1: If list is empty indicate failure and return -1
+    if(IsEmpty())
+    {
+        delete_error_flag = true;
+        return -1;
+    }
+    // Step 2: Let data = data part of head
+    data = head->data;
+    // Step 3: If there is only one in the list then 
+    //	  (i) Free memory pointed by head
+    //	  (ii) Make head as NULL
+    //	   (iii) return data
+    if(head==head->next)
+    {
+        delete head;
+        head = NULL;
+        return data;
+    }
+    // Step 3: Make temp to point to head 
+    temp = head;
+    // Step 4: Move temp to last node
+    while(temp->next!=head)
+    {
+        temp = temp->next;
+    }
+    // Step 5: Next part of temp is next part of head
+    temp->next = head->next;
+    // Step 6: Let temp1 = head
+    temp1 = head;
+    // Step 7: Move head to next node
+    head = head->next;
+    // Step 8: Free piece of memory with address temp1
+    delete temp1;
+    // return data
+    return data;
+}
+int cllist::Last_But_One()
+{
+    //Step 1: If list is empty or there is only one node
+    // Indicate failure
+    if(IsEmpty()||head->next==head)   
+        return -1;
+}
 void cllist::PrintList()
 {
     node* temp;
@@ -104,6 +153,7 @@ void cllist::PrintList()
         temp = temp->next;
     }
     cout<<temp->data<<endl;
+    
 }
 
 

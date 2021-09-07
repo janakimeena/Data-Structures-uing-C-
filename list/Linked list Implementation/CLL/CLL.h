@@ -12,6 +12,7 @@ extern bool delete_error_flag;
 extern bool reterieve_error_flag;
 extern bool previous_error_flag;
 extern bool next_error_flag;
+extern bool last_but_one_error_flag;
 struct node
 {
     int data;
@@ -34,6 +35,7 @@ class cllist
     int reterieve(int);
     int previous(int);
     int next(int);
+    int Last_But_One();
   //  ~cllist();
 };
 #endif

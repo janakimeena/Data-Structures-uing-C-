@@ -133,12 +133,37 @@ int cllist::DeleteBeg()
     // return data
     return data;
 }
-int cllist::Last_But_One()
+
+bool cllist::IsSingleNode()
 {
-    //Step 1: If list is empty or there is only one node
-    // Indicate failure
-    if(IsEmpty()||head->next==head)   
-        return -1;
+    return(head->next==head);
+}
+int cllist::DeleteEnd()
+{
+    node* temp, *temp1;
+    int d;
+    // Step 1: If list is empty or there is only one in the list 
+    // return after calling Delete Beginning
+    if(IsEmpty()||IsSingleNode())
+        return DeleteBeg();
+    // Step 2: Make temp to point to head 
+    temp = head;
+    // Step 3: Move temp to last but one node
+    while(temp->next->next!=head)
+        temp = temp->next;
+    // Step 4: Let temp1 hold address of last node
+    temp1 = temp->next;
+    // Step 5: Make next part of temp as head
+    temp ->next = head;
+    // Step 6: Let d= data part of temp1
+    d = temp1->data;
+    // Step 7: Free piece of memory with address temp1
+    delete temp1;
+    // Step 8: return d
+    return d;
+
+
+
 }
 void cllist::PrintList()
 {

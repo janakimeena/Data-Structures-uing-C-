@@ -21,6 +21,7 @@ struct node
 class cllist
 {
     node* head;
+    bool IsSingleNode();
     public:
     cllist();
     bool IsEmpty();
@@ -35,7 +36,7 @@ class cllist
     int reterieve(int);
     int previous(int);
     int next(int);
-    int Last_But_One();
+    
   //  ~cllist();
 };
 #endif

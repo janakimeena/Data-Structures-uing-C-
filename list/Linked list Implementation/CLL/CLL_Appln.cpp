@@ -5,17 +5,17 @@ int main()
     int t;
     cout<<"Isempty returned "<<l.IsEmpty()<<endl;
     l.InsertEnd(10);
-    l.InsertEnd(7);
-    l.InsertEnd(15);
-    l.InsertEnd(28);
-    l.InsertEnd(19);
-    l.InsertPos(2,25);
-    /*t = l.DeleteBeg();
+    //l.InsertEnd(7);
+    //l.InsertEnd(15);
+   // l.InsertEnd(28);
+    //l.InsertEnd(19);
+    //l.InsertPos(2,25);
+    t = l.DeleteEnd();
     if(delete_error_flag)
         cout<<"Deletion failed";
     else
-        cout<<"Element deleted is "<<t<<endl;*/
-    //l.PrintList();
+        cout<<"Element deleted is "<<t<<endl;
+    l.PrintList();
       
     
     /*l.InsertBeg(2);

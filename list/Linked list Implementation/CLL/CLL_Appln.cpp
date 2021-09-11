@@ -4,13 +4,13 @@ int main()
     cllist l;
     int t;
     cout<<"Isempty returned "<<l.IsEmpty()<<endl;
-    l.InsertEnd(10);
-    //l.InsertEnd(7);
-    //l.InsertEnd(15);
-   // l.InsertEnd(28);
-    //l.InsertEnd(19);
+    l.InsertEnd(1);
+    l.InsertEnd(2);
+    l.InsertEnd(3);
+    l.InsertEnd(4);
+    l.InsertEnd(5);
     //l.InsertPos(2,25);
-    t = l.DeleteEnd();
+    t = l.DeletePos(0);
     if(delete_error_flag)
         cout<<"Deletion failed";
     else

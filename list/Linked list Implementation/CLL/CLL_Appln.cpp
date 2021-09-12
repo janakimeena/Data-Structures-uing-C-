@@ -10,12 +10,12 @@ int main()
     l.InsertEnd(4);
     l.InsertEnd(5);
     //l.InsertPos(2,25);
-    t = l.DeletePos(0);
-    if(delete_error_flag)
-        cout<<"Deletion failed";
+    t = l.locate(5);
+    if(t==-1)
+        cout<<"Element not found\n";
     else
-        cout<<"Element deleted is "<<t<<endl;
-    l.PrintList();
+        cout<<"Element is at position"<<t<<endl;
+    //l.PrintList();
       
     
     /*l.InsertBeg(2);

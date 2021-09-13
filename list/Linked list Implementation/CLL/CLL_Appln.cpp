@@ -10,11 +10,11 @@ int main()
     l.InsertEnd(4);
     l.InsertEnd(5);
     //l.InsertPos(2,25);
-    t = l.locate(5);
-    if(t==-1)
-        cout<<"Element not found\n";
+    t = l.previous(1);
+    if(previous_error_flag)
+        cout<<"position not valid\n";
     else
-        cout<<"Element is at position"<<t<<endl;
+        cout<<"Element at position is "<<t<<endl;
     //l.PrintList();
       
     

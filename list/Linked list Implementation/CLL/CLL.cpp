@@ -262,23 +262,64 @@ int cllist::locate(int ele)
 }
 int cllist:: reterieve(int pos)
 {
-// Step 1: If list is empty then communicate failure and return -1
-// Step 2: Declare a temporary pointer, temp and integer counter
-// Step 3: Initialize temp to point to first node and counter to 1
-// Step 4: While counter<position repeat Step 5 and Step 6
-// Step 5: If next part of temp is head then break
-// Step 6: Move temp to next node and increment counter
-//Step 7: If pos == counter then return data part of temp and communicate failure otherwise
+    node* temp;
+    int counter;
+    reterieve_error_flag = 0;
+    // Step 1: If list is empty then communicate failure 
+    // and return -1
+    if(IsEmpty())
+    {
+        reterieve_error_flag=1;
+        return -1;
+    }
+    // Step 2: Declare a temporary pointer, temp and 
+    // integer counter
+    // Step 3: Initialize temp to point to first node 
+    // and counter to 1
+    temp = head;
+    counter = 1;
+    // Step 4: While counter<position repeat Step 5 and Step 6
+    while(counter<pos)
+    {
+    // Step 5: If next part of temp is head then break
+        if(temp->next==head)
+            break;
+    // Step 6: Move temp to next node and increment counter
+        temp = temp->next;
+        counter++;
+    }
+    // Step 7: If pos == counter then return data part of temp 
+    // and communicate failure otherwise
+    if(pos==counter)
+        return temp->data;
+    reterieve_error_flag = 1;
+    return -1;
 }
 int cllist::previous(int ele)
 {
+    node *temp;
+    previous_error_flag=0;
 // Step 1: If list is empty then Indicate failure to callee function and return -1
+    if(IsEmpty())
+    {
+        previous_error_flag = 1;
+        return -1;
+    }
 // Step 2: Declare a temporary pointer, temp
 // Step 3: Initialize temp to point to first node
+    temp = head;
 // Step 4: When next part of temp is not head repeat Step 5 and Step 6
+    while(temp->next!=head)
+    {
 // Step 5: If data in next node of temp is equal to Element then return data part of temp
+    if(temp->next->data==ele)
+        return temp->data;
 // Step 6: Move temp to next node
+    temp=temp->next;
+    }
 // Step 7: Indicate failure to callee function and return -1
+    previous_error_flag=1;
+    return -1;
 }
 int cllist::next(int ele)
 {

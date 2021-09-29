@@ -29,8 +29,49 @@ bool dllist::IsEmpty()
     return false;
    
 }
+bool dllist::InsertBeg(int d)
+{
+    node * new_node;
+    // Step 1: Call createnode function and get address returned in new_node
+    new_node = CreateNode(d);
+    // Step 2: If new_node is Null is returned return false
+    if (new_node==NULL)
+        return false;
+    // Step 3: If list is empty then make both head and tail to point to new_node
+    if(IsEmpty())
+    {
+        head=tail=new_node;
+        return true;
+    }
+    // Step 4: Make next part of new_node to store head
+    new_node->next = head;
+    // Step 5: Make prev part of head to point to new_node
+    head->prev = new_node;
+    // Step 6: Make head to point to new_node
+    head = new_node;
+    // Step 7: return true
+    return true;
 
+}
+void dllist::PrintList()
+{
+    node* temp;
+    // Step 1: If list is empty return
+    if(IsEmpty())
+        return;
+    // Step 2: Declare a temporary pointer, temp and make it to point to head
+    temp = head;
+    // Step 3: While temp is not NULL repeat step 4 and 5
+    while(temp)
+    {
+    // Step 4: Print data part of temp
+        cout<<temp->data<<endl;
+        temp = temp->next;
+    // Step 5: Move temp to next node
 
+    }
+
+}
 
 
 
@@ -57,7 +98,7 @@ bool reterieve_error_flag = false;
 bool previous_error_flag = false;
 bool next_error_flag = false;
 bool last_but_one_error_flag = false;
-bool cllist::InsertBeg(int d)
+
 {
     node *new_node,*temp;
     new_node = CreateNode(d);

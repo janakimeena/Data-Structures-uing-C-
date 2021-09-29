@@ -21,6 +21,8 @@ class dllist
     public:
     dllist();
     bool IsEmpty();
+    bool InsertBeg(int);
+    void PrintList();
     
 };
 #endif
@@ -47,13 +49,13 @@ node* head;
     public:
     cllist();
     bool IsEmpty();
-    bool InsertBeg(int);
+    
     bool InsertEnd(int);
     bool InsertPos(int,int);
     int DeleteBeg();
     int DeleteEnd();
     int DeletePos(int);
-    void PrintList();
+    
     int locate(int);
     int reterieve(int);
     int previous(int);

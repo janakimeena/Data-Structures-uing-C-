@@ -72,6 +72,53 @@ bool dllist::InsertEnd(int d)
     tail = new_node;
     return true;
 }
+bool dllist::InsertPos(int pos, int d)
+{
+    node *new_node, *temp;
+    int counter;
+    // Step 1: If pos =1 then Call InsertBeg and return
+    if (pos==1)
+        return InsertBeg(d);
+    // Step 2: Call createnode function and get address returned in new_node
+    new_node = CreateNode(d);
+    // Step 3: If new_node is Null then return false
+    if (new_node==NULL)
+        return false;
+    // Step 4: Let temp = head, counter =1
+    temp = head; counter = 1;
+    // Step 5: While temp is not NULL repeat Step 6 and 7
+    while(temp!=tail)
+    {
+    // Step 6: If counter = pos -1 then break
+        if (counter==pos-1)
+            break;
+    // Step 7: Increment counter and move temp to next node
+        counter++;
+        temp = temp->next;
+    }
+    // Step 8: If counter = pos-1 do step 9 to 13
+    if (counter==pos-1)
+    {
+    if (temp==tail)
+        return InsertEnd(d);
+    // Step 9: Next part of new_node = next part of temp
+    new_node->next = temp->next;
+    // Step 10: Prev part of new_node is temp
+    new_node->prev = temp;
+    // Step 11: Previous part of next node of temp is new_node
+    temp->next->prev = new_node;
+    // Step 12: Next part of temp = new_node
+    temp->next = new_node;
+    
+    // Step 13: Return true
+    return true;
+    }
+    // Step 14: Return false
+    return false;
+
+
+
+}
 void dllist::PrintList()
 {
     node* temp;

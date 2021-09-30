@@ -6,7 +6,8 @@ int main()
     cout<<"Isempty returned "<<l.IsEmpty()<<endl;
     l.InsertEnd(1);
     l.InsertEnd(2);
-    l.InsertEnd(3);
+    l.InsertPos(3,3);
+    l.InsertEnd(4);
     l.PrintList();
 }
 

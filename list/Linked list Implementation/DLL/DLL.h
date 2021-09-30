@@ -23,6 +23,7 @@ class dllist
     bool IsEmpty();
     bool InsertBeg(int);
     bool InsertEnd(int);
+    bool InsertPos(int pos, int d);
     void PrintList();
     
 };

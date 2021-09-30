@@ -53,6 +53,25 @@ bool dllist::InsertBeg(int d)
     return true;
 
 }
+bool dllist::InsertEnd(int d)
+{
+    node *new_node;
+    // Step 1: Call createnode function and get address returned in new_node
+    new_node = CreateNode(d);
+    if(!new_node) //new_node==NULL
+        return false;
+    // Step 2: If new_node is Null is returned return false
+    // Step 3: If list is empty then Call Insert beginning and return
+    if(IsEmpty())
+        return InsertBeg(d);
+    // Step 4: Make next part of tail to have address of new_node
+    tail->next = new_node;
+    // Step 5: Make prev part of new_node to contain tail
+    new_node->prev = tail;
+    // Step 6: Make new_node as tail
+    tail = new_node;
+    return true;
+}
 void dllist::PrintList()
 {
     node* temp;

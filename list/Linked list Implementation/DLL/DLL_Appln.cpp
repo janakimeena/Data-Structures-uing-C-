@@ -4,9 +4,9 @@ int main()
     dllist l;
     int t;
     cout<<"Isempty returned "<<l.IsEmpty()<<endl;
-    l.InsertBeg(1);
-    l.InsertBeg(2);
-    l.InsertBeg(3);
+    l.InsertEnd(1);
+    l.InsertEnd(2);
+    l.InsertEnd(3);
     l.PrintList();
 }
 

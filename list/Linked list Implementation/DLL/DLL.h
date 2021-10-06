@@ -8,6 +8,7 @@
 using namespace std;
 #ifndef DLL
 #define DLL
+extern bool DELETE_ERROR_FLAG;
 struct node
 {
     int data;
@@ -18,14 +19,17 @@ class dllist
 {
     node* head;
     node* tail;
+    bool IsSingleNode();
     public:
     dllist();
     bool IsEmpty();
     bool InsertBeg(int);
     bool InsertEnd(int);
     bool InsertPos(int pos, int d);
+    int DeleteBeg();
+    int DeleteEnd();
+    int DeletePos(int);
     void PrintList();
-    
 };
 #endif
 

@@ -6,7 +6,7 @@
 #include<iostream>
 using namespace std;
 #include "DLL.h"
-
+bool DELETE_ERROR_FLAG = false;
 node* CreateNode(int data)
 {
     node* new_node;
@@ -115,9 +115,67 @@ bool dllist::InsertPos(int pos, int d)
     }
     // Step 14: Return false
     return false;
+}
+bool dllist::IsSingleNode()
+{
+    // return true if head==tail and false otherwise
+    return(head==tail);
+}
+int dllist::DeleteBeg()
+{
+    node *temp;
+    int d;
+    DELETE_ERROR_FLAG = false;
+    // Step 1: If list is empty indicate failure and return -1
+    if(IsEmpty())
+    {
+        DELETE_ERROR_FLAG = true;
+        return -1;
+    }
+    // Step 2: Let data = data part of head
+    d = head->data;
+    if(IsSingleNode())
+    {
+    // Step 3: If there is only one in the list (i.e.) if head == tail then 
+    //	  (i) Free memory pointed by head
+    delete head;
+	//    (ii) Make head and tail as NULL
+    head=tail=NULL;
+	//    (iii) return data
+    return d;
+    }
+    // Step 4: Make temp to point to head 
+    temp = head;
+    // Step 5: Move head to next node
+    head = head->next;
+    // Step 6: Free piece of memory pointed by temp
+    delete temp;
+    // Step 7: Return data
+    return d;
+}
+int dllist::DeleteEnd()
+{
+    // Step 1: If list is empty or there is only one in the list return after calling Delete Beginning
+    // Step 2: Make temp to point to tail
+    // Step 3: Move tail to previous node
+    // Step 4: Free memory pointed by tail
+    // Step 5: Return data
 
-
-
+}
+int dllist::DeletePos(int pos)
+{
+    // Step 1: If list is empty or pos =1 then Call DeleteBeg and return
+    // Step 2: Let temp = head, counter =1
+    // Step 3: While counter < pos-1 and temp is not in last node repeat Step 4
+    // Step 4: Increment counter and move temp to next node
+    // Step 5: If counter = pos-1 do step 8 to 12
+    // Step 6: Let temp1  be next node of temp (i.e.) node to be deleted
+    // Step 7: If temp1 is NULL communicate failure and return -1
+    // Step 8: Make next part of temp = next part of temp1
+    // Step 9: Make prev part next node of temp1 as previous part of temp
+    // Step 10: Let d = data part of temp1
+    // Step 11: Free memory pointed by temp1
+    // Step 12: Return d
 }
 void dllist::PrintList()
 {

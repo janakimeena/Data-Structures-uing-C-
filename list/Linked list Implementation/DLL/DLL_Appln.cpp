@@ -4,12 +4,12 @@ int main()
     dllist l;
     int t;
     cout<<"Isempty returned "<<l.IsEmpty()<<endl;
-    //l.InsertEnd(1);
-    //l.InsertEnd(2);
+    l.InsertEnd(1);
+    l.InsertEnd(2);
     l.InsertEnd(4);
     cout<<"Before deletion list is "<<endl;
     l.PrintList();
-    t = l.DeleteBeg();
+    t = l.DeleteEnd();
     if (DELETE_ERROR_FLAG)
         cout<<"Deletion failed"<<endl;
     else
@@ -17,13 +17,13 @@ int main()
     
     cout<<"After deletion list is "<<endl;
     l.PrintList();
-    t = l.DeleteBeg();
+    /*t = l.DeleteBeg();
     if (DELETE_ERROR_FLAG)
         cout<<"Deletion failed"<<endl;
     else
         cout<<"Element deleted is "<<t<<endl;
     cout<<"After deletion list is "<<endl;
-    l.PrintList();
+    l.PrintList();*/
 }
 
 

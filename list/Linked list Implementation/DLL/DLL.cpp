@@ -155,12 +155,26 @@ int dllist::DeleteBeg()
 }
 int dllist::DeleteEnd()
 {
+    node* temp;
+    int d;
+    DELETE_ERROR_FLAG = false;
     // Step 1: If list is empty or there is only one in the list return after calling Delete Beginning
+    if(IsEmpty()||IsSingleNode())
+    {
+        return DeleteBeg();
+    }
     // Step 2: Make temp to point to tail
+    temp = tail;
     // Step 3: Move tail to previous node
-    // Step 4: Free memory pointed by tail
-    // Step 5: Return data
+    tail = tail ->prev;
+    tail->next = NULL;
+    
 
+    // Step 4: Free memory pointed by tail
+    d = temp->data;
+    delete temp;
+    // Step 5: Return data
+    return d;
 }
 int dllist::DeletePos(int pos)
 {

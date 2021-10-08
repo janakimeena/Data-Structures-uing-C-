@@ -7,6 +7,7 @@
 using namespace std;
 #include "DLL.h"
 bool DELETE_ERROR_FLAG = false;
+bool RETRIEVE_ERROR_FLAG = false;
 node* CreateNode(int data)
 {
     node* new_node;
@@ -178,18 +179,107 @@ int dllist::DeleteEnd()
 }
 int dllist::DeletePos(int pos)
 {
+    node* temp,*temp1;
+    int counter,d;
     // Step 1: If list is empty or pos =1 then Call DeleteBeg and return
+    if(IsEmpty()||(pos==1))
+    {
+        return DeleteBeg();
+    }
+    temp = head;
+    counter = 1;
     // Step 2: Let temp = head, counter =1
     // Step 3: While counter < pos-1 and temp is not in last node repeat Step 4
+    while(counter<pos-1&&temp!=tail)
+    {
     // Step 4: Increment counter and move temp to next node
+    counter++;
+    temp = temp->next;
+    }
     // Step 5: If counter = pos-1 do step 8 to 12
+    if(counter==pos-1)
+    {
     // Step 6: Let temp1  be next node of temp (i.e.) node to be deleted
+    temp1=temp->next;
     // Step 7: If temp1 is NULL communicate failure and return -1
+    if(temp1==NULL)
+    {
+        DELETE_ERROR_FLAG = true;
+        return -1;
+    }
+    if(temp1==tail)
+        return DeleteEnd();
     // Step 8: Make next part of temp = next part of temp1
+    temp->next = temp1->next;
     // Step 9: Make prev part next node of temp1 as previous part of temp
+    temp1->next->prev = temp;
     // Step 10: Let d = data part of temp1
+    d = temp1->data;
     // Step 11: Free memory pointed by temp1
+    delete temp1;
     // Step 12: Return d
+    return d;
+    }
+    DELETE_ERROR_FLAG = true;
+    return -1;
+}
+int dllist::Locate(int ele)
+{
+    node* temp;
+    int counter;
+    // Step 1: If list is empty then communicate failure and return -1
+    if(IsEmpty())
+    {
+        return -1;
+    }
+    // Step 2: Declare a temporary pointer, temp and integer counter
+    // Step 3: Initialize temp to point to first node and counter to 1
+    temp = head;
+    counter = 1;
+    // Step 4: While temp not equal to null repeat Step 5 and Step 6
+    while(temp!=NULL)
+    {
+        if(temp->data==ele)
+            return counter;
+    // Step 5: If data part of node pointed by temp is equal to Element return counter 
+    // Step 6: Move temp to next node and increment counter
+        temp=temp->next;
+        counter++;
+    }
+    // Step 8: return -1
+    return -1;
+}
+int dllist::Retrieve(int pos)
+{
+    node* temp;
+    int counter;
+    RETRIEVE_ERROR_FLAG = false;
+    // Step 1: If list is empty then communicate failure and return -1
+    if(IsEmpty())
+    {
+        RETRIEVE_ERROR_FLAG = true;
+        return -1;
+    }
+    // Step 2: Declare a temporary pointer, temp and integer counter
+    // Step 3: Initialize temp to point to first node and counter to 1
+    temp = head;
+    counter =1;
+    while(counter<pos)
+    {
+    // Step 4: While counter<position repeat Step 5 and Step 6
+    // Step 5: If temp is tail then break
+    if(temp==tail)
+        break;
+    // Step 6: Move temp to next node and increment counter
+    temp = temp->next;
+    counter++;
+    }
+    // Step 7: If pos == counter then return data part of temp and communicate failure otherwise
+    if(pos==counter)
+       return temp->data;
+    RETRIEVE_ERROR_FLAG=true;
+    return -1;
+    
 }
 void dllist::PrintList()
 {

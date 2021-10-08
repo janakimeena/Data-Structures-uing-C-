@@ -9,6 +9,7 @@ using namespace std;
 #ifndef DLL
 #define DLL
 extern bool DELETE_ERROR_FLAG;
+extern bool RETRIEVE_ERROR_FLAG;
 struct node
 {
     int data;
@@ -29,6 +30,8 @@ class dllist
     int DeleteBeg();
     int DeleteEnd();
     int DeletePos(int);
+    int Locate(int ele);
+    int Retrieve(int pos);
     void PrintList();
 };
 #endif

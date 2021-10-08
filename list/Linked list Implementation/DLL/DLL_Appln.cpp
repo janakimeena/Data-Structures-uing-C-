@@ -4,19 +4,19 @@ int main()
     dllist l;
     int t;
     cout<<"Isempty returned "<<l.IsEmpty()<<endl;
-    l.InsertEnd(1);
-    l.InsertEnd(2);
-    l.InsertEnd(4);
+    l.InsertEnd(11);
+    l.InsertEnd(23);
+    l.InsertEnd(45);
     cout<<"Before deletion list is "<<endl;
     l.PrintList();
-    t = l.DeleteEnd();
-    if (DELETE_ERROR_FLAG)
-        cout<<"Deletion failed"<<endl;
+    t = l.Retrieve(4);
+    if (RETRIEVE_ERROR_FLAG)
+        cout<<"Failed"<<endl;
     else
-        cout<<"Element deleted is "<<t<<endl;
+        cout<<"Element is at "<<t<<endl;
     
-    cout<<"After deletion list is "<<endl;
-    l.PrintList();
+    //cout<<"After deletion list is "<<endl;
+    //l.PrintList();
     /*t = l.DeleteBeg();
     if (DELETE_ERROR_FLAG)
         cout<<"Deletion failed"<<endl;
